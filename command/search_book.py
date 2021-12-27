@@ -79,7 +79,7 @@ def show_book(update: Update, context: CallbackContext) -> None:
 
     query.answer()
 
-    query.edit_message_text(text=f"Detail Buku:\n{message}")
+    query.edit_message_text(text=f"Detail Buku\n{message}")
 
     clear_user_data(context)
     return ConversationHandler.END

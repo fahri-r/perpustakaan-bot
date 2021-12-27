@@ -35,10 +35,12 @@ def cancel(update: Update, context: CallbackContext) -> int:
 
 def clear_user_data(context: CallbackContext) -> int:
     user_data = context.user_data
-    if 'token' in user_data:
+    if 'token' and 'member_id' in user_data:
         token = user_data['token']
+        member_id = user_data['member_id']
         user_data.clear()
         user_data['token'] = token
+        user_data['member_id'] = member_id
     else:
         user_data.clear()
 
@@ -52,5 +54,6 @@ def login(context: CallbackContext) -> int:
     r = requests.post(url, data)
     if (r.status_code == 200):
         user_data['token'] = r.json()['token']['token']
+        user_data['member_id'] = r.json()['token']['member_id']
     else:
         start

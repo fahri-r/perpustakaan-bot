@@ -8,7 +8,7 @@ from telegram.ext import (CallbackQueryHandler, CommandHandler,
                           Updater)
 
 import state
-from command import general, register, search_book
+from command import general, profile, register, search_book
 
 # Enable logging
 logging.basicConfig(
@@ -41,6 +41,7 @@ def main() -> None:
             CommandHandler('help', general.start),
             CommandHandler('registrasi', register.command),
             CommandHandler('caribuku', search_book.command),
+            CommandHandler('profil', profile.command),
         ],
         states={
             state.EMAIL: [
