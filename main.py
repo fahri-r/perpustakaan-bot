@@ -8,7 +8,7 @@ from telegram.ext import (CallbackQueryHandler, CommandHandler,
                           Updater)
 
 import state
-from command import general, profile, register, search_book
+from command import general, notification, profile, register, search_book
 
 # Enable logging
 logging.basicConfig(
@@ -22,6 +22,7 @@ def main() -> None:
     # Create the Updater and pass it your bot's token.
     updater = Updater(config('BOT_TOKEN'))
 
+    # Set bot commands
     with open(".\command\list.json", "r") as read_file:
         cmd_list = json.load(read_file)
 
@@ -42,6 +43,7 @@ def main() -> None:
             CommandHandler('registrasi', register.command),
             CommandHandler('caribuku', search_book.command),
             CommandHandler('profil', profile.command),
+            CommandHandler('notifikasi', notification.command),
         ],
         states={
             state.EMAIL: [
@@ -63,6 +65,9 @@ def main() -> None:
             ],
             state.SHOWBOOK: [
                 CallbackQueryHandler(search_book.show_book)
+            ],
+            state.NOTIFICATION: [
+                CallbackQueryHandler(notification.button)
             ]
         },
         fallbacks=[CommandHandler('cancel', general.cancel)],
