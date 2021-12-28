@@ -1,6 +1,7 @@
 {
     "caribuku" : "mencari buku berdasarkan judul",
     "notifikasi" : "mengaktifkan/mematikan notifikasi peminjaman",
+    "peminjaman" : "daftar peminjaman",
     "profil" : "melihat profil member",
     "registrasi" : "registrasi pengguna baru"
 }

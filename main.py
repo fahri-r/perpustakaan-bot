@@ -8,7 +8,7 @@ from telegram.ext import (CallbackQueryHandler, CommandHandler,
                           Updater)
 
 import state
-from command import general, notification, profile, register, search_book
+from command import borrow, general, notification, profile, register, search_book
 
 # Enable logging
 logging.basicConfig(
@@ -44,6 +44,7 @@ def main() -> None:
             CommandHandler('caribuku', search_book.command),
             CommandHandler('profil', profile.command),
             CommandHandler('notifikasi', notification.command),
+            CommandHandler('peminjaman', borrow.command),
         ],
         states={
             state.EMAIL: [
@@ -68,6 +69,9 @@ def main() -> None:
             ],
             state.NOTIFICATION: [
                 CallbackQueryHandler(notification.button)
+            ],
+            state.SHOWBORROW: [
+                CallbackQueryHandler(borrow.show_borrow)
             ]
         },
         fallbacks=[CommandHandler('cancel', general.cancel)],

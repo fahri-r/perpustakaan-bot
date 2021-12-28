@@ -7,7 +7,7 @@ from state import NOTIFICATION
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import CallbackContext, ConversationHandler
 
-from command.general import login
+from command.general import clear_user_data, login
 
 
 def command(update: Update, context: CallbackContext) -> None:
@@ -35,7 +35,8 @@ def button(update: Update, context: CallbackContext) -> None:
 
     if query.data != '0':
         try:
-            time = datetime.time(hour=15, minute=40, second=0,
+            remove_job_if_exists(str(query.data), context)
+            time = datetime.time(hour=8, minute=0, second=0,
                                  microsecond=0, tzinfo=pytz.timezone('Asia/Jakarta'))
             context.job_queue.run_daily(alarm, time, days=(
                 0, 1, 2, 3, 4, 5, 6), context=context.user_data, name=str(query.data))
@@ -54,6 +55,7 @@ def button(update: Update, context: CallbackContext) -> None:
     query.answer()
 
     query.edit_message_text(text=msg)
+    clear_user_data(context)
     return ConversationHandler.END
 
 
@@ -73,6 +75,16 @@ def alarm(context: CallbackContext) -> None:
     if (r.status_code == 200):
         data = r.json()['data']
         for x in data:
-            book = x['book']['title']
-            context.bot.send_message(
-                job.context['chat_id'], text=f"Hari ini adalah jadwal pengembalian buku {book}.")
+            if not x['status']: 
+                book = x['book']['title']
+                context.bot.send_message(
+                    job.context['chat_id'], text=f"Hari ini adalah jadwal pengembalian buku {book}.")
+
+
+def remove_job_if_exists(name: str, context: CallbackContext) -> bool:
+    current_jobs = context.job_queue.get_jobs_by_name(name)
+    if not current_jobs:
+        return False
+    for job in current_jobs:
+        job.schedule_removal()
+    return True
