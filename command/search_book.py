@@ -68,18 +68,23 @@ def show_book(update: Update, context: CallbackContext) -> None:
     }
 
     r = requests.get(url, headers=headers)
-    data = r.json()['data']
-    message = (
-        f"Judul: {data['title']}\n"
-        f"Deskripsi: {data['description']}\n"
-        f"Tahun Terbit: {data['year']}\n"
-        f"Pengarang: {data['author']}\n"
-        f"Jumlah Buku Tersedia: {data['qty']}\n"
-    )
+
+    if r.status_code == 200:
+        data = r.json()['data']
+        message = (
+            f"Detail Buku\n"
+            f"Judul: {data['title']}\n"
+            f"Deskripsi: {data['description']}\n"
+            f"Tahun Terbit: {data['year']}\n"
+            f"Pengarang: {data['author']}\n"
+            f"Jumlah Buku Tersedia: {data['qty']}\n"
+        )
+    else:
+        message = 'Tidak dapat menampilkan detail Buku.'
 
     query.answer()
 
-    query.edit_message_text(text=f"Detail Buku\n{message}")
+    query.edit_message_text(text=message)
 
     clear_user_data(context)
     return ConversationHandler.END

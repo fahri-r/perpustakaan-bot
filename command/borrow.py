@@ -53,17 +53,22 @@ def show_borrow(update: Update, context: CallbackContext) -> None:
     }
 
     r = requests.get(url, headers=headers)
-    data = r.json()['data']
-    message = (
-        f"Judul Buku: {data['book']['title']}\n"
-        f"Tanggal Pinjam: {data['borrow_date']}\n"
-        f"Tanggal Kembali: {data['return_date']}\n"
-        f"Status: {'Sudah Kembali' if data['status'] else 'Belum Kembali'}\n"\
-    )
+
+    if r.status_code == 200:
+        data = r.json()['data']
+        message = (
+            f"Detail Peminjaman\n"
+            f"Judul Buku: {data['book']['title']}\n"
+            f"Tanggal Pinjam: {data['borrow_date']}\n"
+            f"Tanggal Kembali: {data['return_date']}\n"
+            f"Status: {'Sudah Kembali' if data['status'] else 'Belum Kembali'}\n"
+        )
+    else:
+        message = "Tidak dapat menampilkan detail Peminjaman."
 
     query.answer()
 
-    query.edit_message_text(text=f"Detail Buku\n{message}")
+    query.edit_message_text(text=message)
 
     clear_user_data(context)
     return ConversationHandler.END
