@@ -1,4 +1,5 @@
 import json
+import os
 
 import requests
 from decouple import config
@@ -7,7 +8,9 @@ from telegram.ext import CallbackContext, ConversationHandler
 
 
 def start(update: Update, context: CallbackContext) -> None:
-    with open(".\command\list.json", "r") as read_file:
+    this_folder = os.path.dirname(os.path.abspath(__file__))
+    listJson = os.path.join(this_folder, 'list.json')
+    with open(listJson, "r") as read_file:
         cmd_list = json.load(read_file)
 
     message_cmd = ""

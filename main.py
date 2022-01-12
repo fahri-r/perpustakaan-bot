@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 
 from decouple import config
 from telegram import BotCommand
@@ -23,7 +24,9 @@ def main() -> None:
     updater = Updater(config('BOT_TOKEN'))
 
     # Set bot commands
-    with open(".\command\list.json", "r") as read_file:
+    this_folder = os.path.dirname(os.path.abspath(__file__))
+    listJson = os.path.join(this_folder, 'command/list.json')
+    with open(listJson, "r") as read_file:
         cmd_list = json.load(read_file)
 
     commands = []
