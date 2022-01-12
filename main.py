@@ -11,6 +11,11 @@ from telegram.ext import (CallbackQueryHandler, CommandHandler,
 import state
 from command import borrow, general, notification, profile, register, search_book
 
+PORT = int(os.environ.get('PORT', 5000))
+TOKEN = config('BOT_TOKEN')
+HOST = config('HOST')
+URL_APP = config('URL_APP')
+
 # Enable logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -21,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 def main() -> None:
     # Create the Updater and pass it your bot's token.
-    updater = Updater(config('BOT_TOKEN'))
+    updater = Updater(TOKEN)
 
     # Set bot commands
     this_folder = os.path.dirname(os.path.abspath(__file__))
@@ -84,7 +89,10 @@ def main() -> None:
     dispatcher.add_handler(conv_handler)
 
     # Start the Bot
-    updater.start_polling()
+    updater.start_webhook(listen=HOST,
+                          port=int(PORT),
+                          url_path=TOKEN,
+                          webhook_url=URL_APP + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
