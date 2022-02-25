@@ -16,7 +16,7 @@ def command(update: Update, context: CallbackContext) -> None:
     keyboard = [
         [
             InlineKeyboardButton(
-                "Aktifkan", callback_data=update.message.chat_id),
+                "Aktifkan", callback_data=update.message.from_user.id),
             InlineKeyboardButton("Matikan", callback_data='0'),
         ],
     ]
@@ -31,7 +31,6 @@ def button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     if not 'token' in context.user_data:
         login(context)
-    context.user_data['chat_id'] = query.data
 
     if query.data != '0':
         try:
@@ -78,7 +77,7 @@ def alarm(context: CallbackContext) -> None:
             if not x['status']: 
                 book = x['book']['title']
                 context.bot.send_message(
-                    job.context['chat_id'], text=f"Hari ini adalah jadwal pengembalian buku {book}.")
+                    job.name, text=f"Hari ini adalah jadwal pengembalian buku {book}.")
 
 
 def remove_job_if_exists(name: str, context: CallbackContext) -> bool:

@@ -89,6 +89,7 @@ def main() -> None:
     dispatcher.add_handler(conv_handler)
 
     # Start the Bot
+    # updater.start_polling()
     updater.start_webhook(listen=HOST,
                           port=int(PORT),
                           url_path=TOKEN,
