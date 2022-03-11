@@ -168,7 +168,7 @@ Perpustakaan Telegram Bot (Library) is telegram bot for library management syste
 
 ### Deployment
 
-When you're ready to deploy this bot into production, you have to change `URL_APP` value in `.env`. The value must be the url where the bot is deployed.
+When you're ready to deploy this bot into production, you have to change **URL_APP** value in `.env`. The value must be the url where the bot is deployed.
 
 <p align="right">
     <a href="#top">
@@ -185,11 +185,11 @@ Contributions are what make the open source community such an amazing place to l
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the Project.
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the Branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
 <p align="right">
     <a href="#top">
@@ -222,6 +222,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [issues-shield]: https://img.shields.io/github/issues/fahri-r/perpustakaan-bot?style=for-the-badge
 [issues-url]: https://github.com/fahri-r/perpustakaan-bot/issues
 [license-shield]: https://img.shields.io/github/license/fahri-r/perpustakaan-bot?style=for-the-badge
-[license-url]: https://github.com/fahri-r/perpustakaan-bot/blob/master/LICENSE
+[license-url]: https://github.com/fahri-r/perpustakaan-bot/blob/main/LICENSE
 [size-shield]: https://img.shields.io/github/repo-size/fahri-r/perpustakaan-bot?style=for-the-badge
 [product-screenshot]: https://drive.google.com/uc?id=1rT1HApQ4Xi1tH_ot72rwNPL5WCeeVG1e
