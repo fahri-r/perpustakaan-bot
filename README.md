@@ -79,7 +79,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot][product-screenshot]
+[![Product Name Screen Shot][product-screenshot]][product-screenshot]
 
 Perpustakaan Telegram Bot (Library) is telegram bot for library management system. It can manage member data in a library. This bot consumes [Perpustakaan API](https://github.com/fahri-r/perpustakaan-api).
 
@@ -213,15 +213,15 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/fahri-r/perpustakaan-bot.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/fahri-r/perpustakaan-bot?style=for-the-badge
 [contributors-url]: https://github.com/fahri-r/perpustakaan-bot/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/fahri-r/perpustakaan-bot.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/fahri-r/perpustakaan-bot?style=for-the-badge
 [forks-url]: https://github.com/fahri-r/perpustakaan-bot/network/members
-[stars-shield]: https://img.shields.io/github/stars/fahri-r/perpustakaan-bot.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/fahri-r/perpustakaan-bot?style=for-the-badge
 [stars-url]: https://github.com/fahri-r/perpustakaan-bot/stargazers
-[issues-shield]: https://img.shields.io/github/issues/fahri-r/perpustakaan-bot.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/fahri-r/perpustakaan-bot?style=for-the-badge
 [issues-url]: https://github.com/fahri-r/perpustakaan-bot/issues
-[license-shield]: https://img.shields.io/github/license/fahri-r/perpustakaan-bot.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/fahri-r/perpustakaan-bot?style=for-the-badge
 [license-url]: https://github.com/fahri-r/perpustakaan-bot/blob/master/LICENSE
-[size-shield]: https://img.shields.io/github/repo-size/fahri-r/perpustakaan-bot.svg?style=for-the-badge
+[size-shield]: https://img.shields.io/github/repo-size/fahri-r/perpustakaan-bot?style=for-the-badge
 [product-screenshot]: https://drive.google.com/uc?id=1rT1HApQ4Xi1tH_ot72rwNPL5WCeeVG1e
