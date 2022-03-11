@@ -89,11 +89,11 @@ def main() -> None:
     dispatcher.add_handler(conv_handler)
 
     # Start the Bot
-    # updater.start_polling()
+    # updater.start_polling() #uncomment this line if you want to start on local server
     updater.start_webhook(listen=HOST,
                           port=int(PORT),
                           url_path=TOKEN,
-                          webhook_url=URL_APP + TOKEN)
+                          webhook_url=URL_APP + TOKEN) #comment this line if you want to start on local server
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since

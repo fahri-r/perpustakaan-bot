@@ -56,7 +56,7 @@ def login(context: CallbackContext) -> int:
     }
     r = requests.post(url, data)
     if (r.status_code == 200):
-        user_data['token'] = r.json()['token']['token']
-        user_data['member_id'] = r.json()['token']['member_id']
+        user_data['token'] = r.json()['data']['token']
+        user_data['member_id'] = r.json()['data']['member_id']
     else:
         start
