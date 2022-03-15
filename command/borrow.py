@@ -17,25 +17,27 @@ def command(update: Update, context: CallbackContext) -> int:
     headers = {
         'Authorization': f"Bearer {context.user_data['token']}"
     }
+    params = {
+        'status': 'false'
+    }
 
-    r = requests.get(url, headers=headers)
+    r = requests.get(url, params=params, headers=headers)
 
     if (r.status_code == 200):
         data = r.json()['data']
         keyboard = []
         for x in data:
-            status = 'Selesai' if x['status'] else 'Aktif'
             keyboard.append([InlineKeyboardButton(
-                f"{x['book']['title']} ({status})", callback_data=x['id'])])
+                f"{x['book']['title']}", callback_data=x['id'])])
 
         reply_markup = InlineKeyboardMarkup(keyboard)
 
         update.message.reply_text(
-            'Daftar Buku Pinjaman:', reply_markup=reply_markup)
+            'Daftar Peminjaman Aktif:', reply_markup=reply_markup)
 
         return SHOWBORROW
 
-    update.message.reply_text('Anda belum pernah meminjam buku.')
+    update.message.reply_text('Tidak ada peminjaman yang aktif.')
     clear_user_data(context)
 
     return ConversationHandler.END
